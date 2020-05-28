@@ -7,5 +7,6 @@ A simple application where you as a user can find a movie or a tv show by key wo
 # technologies and tools
 Built with HTML, CSS, JavaScript
 
-Link: https://vikakleyko.github.io/netclicks/
+# link
+https://vikakleyko.github.io/netclicks/
 
