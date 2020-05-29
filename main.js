@@ -20,13 +20,16 @@ const leftMenu = document.querySelector('.left-menu'),
  pagination = document.querySelector('.pagination');
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2';
-const API_KEY_3 = '455bf3bcb765b8b07f0bb4d2877f0533';
-const SERVER = 'https://api.themoviedb.org/3';
 
 const loading = document.createElement('div');
 loading.className = 'loading';
 
 const DBService = class {
+
+  constructor() {
+    this.SERVER = 'https://api.themoviedb.org/3';
+    this.API_KEY_3 = '455bf3bcb765b8b07f0bb4d2877f0533';
+  }
   getData = async (url) => {
     const res = await fetch(url);
     if (res.ok) {
@@ -45,7 +48,7 @@ const DBService = class {
   };
 
   getSearchResult = query => {
-    this.temp = `${SERVER}/search/tv?api_key=${API_KEY_3}&query=${query}&language=en-US`;
+    this.temp = `${this.SERVER}/search/tv?api_key=${this.API_KEY_3}&query=${query}&language=en-US`;
     return this.getData(this.temp);
   }
 
@@ -54,24 +57,21 @@ const DBService = class {
   }
 
   getTvShow = id => {
-    return this.getData(`${SERVER}/tv/${id}?api_key=${API_KEY_3}&language=en-US`);
+    return this.getData(`${this.SERVER}/tv/${id}?api_key=${this.API_KEY_3}&language=en-US`);
   }
 
-  getTopRated = () => this.getData(`${SERVER}/tv/top_rated?api_key=${API_KEY_3}&language=en-US`);
+  getTopRated = () => this.getData(`${this.SERVER}/tv/top_rated?api_key=${this.API_KEY_3}&language=en-US`);
 
-  getPopular = () => this.getData(`${SERVER}/tv/popular?api_key=${API_KEY_3}&language=en-US`);
+  getPopular = () => this.getData(`${this.SERVER}/tv/popular?api_key=${this.API_KEY_3}&language=en-US`);
 
-  getToday = () => this.getData(`${SERVER}/tv/airing_today?api_key=${API_KEY_3}&language=en-US`);
+  getToday = () => this.getData(`${this.SERVER}/tv/airing_today?api_key=${this.API_KEY_3}&language=en-US`);
 
-  getWeek = () => this.getData(`${SERVER}/tv/on_the_air?api_key=${API_KEY_3}&language=en-US`);
+  getWeek = () => this.getData(`${this.SERVER}/tv/on_the_air?api_key=${this.API_KEY_3}&language=en-US`);
 };
 
 const dbService = new DBService;
 
 const renderCard = (response, target) => {
-
-  // debugger;
-
   tvShowList.textContent = '';
 
   if(!response.total_results) {
@@ -128,7 +128,6 @@ searchForm.addEventListener('submit', event => {
 
   const value = searchFormInput.value.trim();
   if(value) {
-    // tvShows.append(loading);
     dbService.getSearchResult(value).then(renderCard);
   }
   searchFormInput.value = '';
@@ -154,8 +153,6 @@ hamburger.addEventListener('click', () => {
 });
 
 document.body.addEventListener('click', (event) => {
-  // console.log(!!event.target.closest('.left-menu'));
-
   if (!event.target.closest('.left-menu')) {
     leftMenu.classList.remove('openMenu');
     hamburger.classList.remove('open');
@@ -173,7 +170,6 @@ leftMenu.addEventListener('click', (event) => {
     hamburger.classList.add('open');
   }
 
-  //or use bind instead of function
   if(target.closest('#top-rated')) {
     tvShows.append(loading);
     dbService.getTopRated().then((response) => renderCard(response, target));
@@ -233,18 +229,9 @@ tvShowList.addEventListener('click', (event) => {
             modalContent.style.paddingLeft = '25px';
           }
           modalTitle.textContent = title;
-          // genresList.innerHTML = data.genres.reduce((acc, item) => { 
-          // `${acc}<li>${item.name}</li>`
-          // }, '');
-
           genres.forEach( item => {
             genresList.innerHTML += `<li>${item.name}</li>`;
           })
-
-          // genresList.textContent = '';
-          // for(const item of data.genres) {
-          //   genresList.innerHTML += genresList.innerHTML + `<li>${item.name}</li>`;
-          // }
           rating.textContent = voteAverage;
           description.textContent = overview;
           modalLink.href = homepage;
@@ -277,7 +264,6 @@ modal.addEventListener('click', (event) => {
 // replace card on hover
 const changeImage = (event) => {
   const card = event.target.closest('.tv-shows__item');
-  // console.log(card);
   if (card) {
     const img = card.querySelector('.tv-card__img');
     if (img.dataset.backdrop) {
