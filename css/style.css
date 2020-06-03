@@ -577,7 +577,7 @@ main {
 }
 
 .modal__description {
-	overflow-y: visible;
+	overflow-y: auto;
 	max-height: 400px;
 }
 
