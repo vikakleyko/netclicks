@@ -1,3 +1,6 @@
+# link
+https://vikakleyko.github.io/netclicks/
+
 # netclicks
 Movies catalogue with search function
 
@@ -7,6 +10,5 @@ A simple application where you as a user can find a movie or a tv show by key wo
 # technologies and tools
 Built with HTML, CSS, JavaScript, Animation
 
-# link
-https://vikakleyko.github.io/netclicks/
+
 
