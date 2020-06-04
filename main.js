@@ -159,7 +159,6 @@ searchForm.addEventListener("submit", (event) => {
 }
 
 // handle menu
-
 const closeDropDown = () => {
   dropdown.forEach((item) => {
     item.classList.remove("active");
