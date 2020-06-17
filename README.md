@@ -13,5 +13,9 @@ Built with HTML, CSS, JavaScript, Animation, REST API
 
 https://developers.themoviedb.org/3/tv/get-tv-details
 
+# How to start
+
+Live server
+
 
 
