@@ -8,14 +8,12 @@ It is an application where you can find a movie or a tv show by key word. You ca
 
 ## Technologies and tools
 Built with HTML, CSS, JavaScript, Animation, REST API
+Start project with Live server
 
 ## API used
 
 https://developers.themoviedb.org/3/tv/get-tv-details
 
-### How to start
-
-Live server
 
 
 
