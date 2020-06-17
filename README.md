@@ -8,6 +8,8 @@ It is an application where you can find a movie or a tv show by key word. You ca
 
 ## Technologies and tools
 Built with HTML, CSS, JavaScript, Animation, REST API
+
+## How to start
 Start project with Live server
 
 ## API used
