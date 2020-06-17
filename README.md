@@ -1,4 +1,4 @@
-# Link
+# Project link
 https://vikakleyko.github.io/netclicks/
 
 # Description
